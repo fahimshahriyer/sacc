@@ -15,14 +15,19 @@ class CreateSubscriptionsTable extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('student_id');
-            $table->integer('payplan_id');
+            $table->integer('student_id')->unsigned();
+            $table->integer('payplan_id')->unsigned();
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->boolean('is_active');
             $table->integer('cancelled_by');
             $table->string('cancellation_reason');
             $table->timestamps();
+        });
+
+        Schema::table('subscriptions', function (Blueprint $table) {
+            $table->foreign('payplan_id')->references('id')->on('payplans')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

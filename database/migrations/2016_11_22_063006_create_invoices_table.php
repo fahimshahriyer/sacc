@@ -15,16 +15,16 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('student_id');
-            $table->double('sub_total');
-            $table->double('total_tax');
-            $table->double('total_adjustment');
-            $table->double('grand_total');
-            $table->date('date_from');
-            $table->date('date_to');
-            $table->date('approval_date');
+            $table->string('invoice_no')->unique();
+            $table->dateTime('invoice_date');
+            $table->dateTime('due_date');
+            $table->integer('student_id')->unsigned();
+            $table->decimal('sub_total');
+            $table->decimal('total_tax')->nullable();
+            $table->decimal('total_adjustment');
+            $table->decimal('grand_total');
+            $table->dateTime('approval_date');
             $table->boolean('is_paid');
-            $table->dateTime('paid_at');
             $table->timestamps();
         });
     }

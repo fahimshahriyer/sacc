@@ -1,0 +1,64 @@
+.navbar
+{
+    position: relative;
+    z-index: 3;
+
+    display: flex;
+    flex-direction: row;
+
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 72px;
+    padding: 0 40px;
+
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    align-self: stretch;
+    align-items: center;
+    .navbar-brand
+    {
+        font-size: 24px;
+        font-weight: bold;
+
+        letter-spacing: .02em;
+        text-transform: uppercase;
+
+        color: @color-primary;
+    }
+    .navbar-title
+    {
+        font-size: 20px;
+        font-weight: 400;
+
+        letter-spacing: .02em;
+    }
+    .navbar-spacer
+    {
+        flex-grow: 1;
+    }
+    .nav-link
+    {
+        font-size: 14px;
+
+        position: relative;
+
+        padding: 0 24px;
+
+        text-decoration: none;
+
+        color: #89899f;
+        &:hover
+        {
+            color: darken(#89899f, 10%);
+        }
+        &:last-child
+        {
+            padding: 0;
+        }
+    }
+}
+.navbar-default
+{
+    border-bottom: 1px solid #e6e6e6;
+    background: #fff;
+}

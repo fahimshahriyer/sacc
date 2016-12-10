@@ -1,0 +1,116 @@
+//
+// Component: Form
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@form-height:                                   @global-height;
+@form-border:                                   @global-border;
+@form-background:                               @global-background;
+@form-color:                                    @global-color;
+
+@form-focus-color:                              @global-color;
+
+@form-disabled-border:                          @global-border;
+@form-disabled-background:                      #fafafa;
+@form-disabled-color:                           @global-muted-color;
+
+@form-placeholder-color:                        @global-muted-color;
+
+@form-gutter:                                   @global-margin;
+
+@form-legend-border:                            @global-border;
+@form-legend-font-size:                         round((@global-font-size * 1.28)); // 18px / 20px
+@form-legend-line-height:                       round((@form-legend-font-size * 1.68)); // 30px / 34px
+
+@form-small-height:                             @global-height-small;
+@form-large-height:                             @global-height-large;
+@form-small-font-size:                          round((@global-font-size * 0.85)); // 12px / 14px
+@form-large-font-size:                          round((@global-font-size * 1.14)); // 16px / 18px
+
+@form-blank-border:                             @global-border;
+
+@form-icon-font-size:                           @global-font-size;
+@form-icon-color:                               @global-muted-color;
+
+
+// Component
+// ========================================================================
+
+.hook-form() { 
+	border-radius: 2px;
+	color: #89899F;
+	font-size: 14px !important;
+	padding-left: 16px !important;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.08);
+	transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+	border: none;
+}
+
+// Focus state
+.hook-form-focus() {
+	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2),0 0 0 1px rgba(0,0,0,0.08);
+	transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+	background: #ffffff;
+	border: none;
+}
+
+// Disabled state
+.hook-form-disabled() {}
+
+// Legend
+.hook-form-legend() {}
+
+
+// Validation states
+// ========================================================================
+
+//
+// Error state
+//
+
+.hook-form-danger() {}
+
+//
+// Success state
+//
+
+.hook-form-success() {}
+
+
+// Style modifiers
+// ========================================================================
+
+.hook-form-blank() {}
+
+.hook-form-blank-focus() {}
+
+
+// Sub-object: `uk-form-label`
+// ========================================================================
+
+.hook-form-stacked-label() {
+	margin-bottom: 16px;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 400;
+	opacity: 0.5;
+}
+
+.hook-form-horizontal-label() {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 400;
+	opacity: 0.5;
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-form-misc() {}

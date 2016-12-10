@@ -1,3 +1,4 @@
+process.env.DISABLE_NOTIFIER = true;
 const elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue-2');
@@ -13,7 +14,26 @@ require('laravel-elixir-vue-2');
  |
  */
 
+// elixir(function(mix) {
+//     mix.copy('node_modules/uikit/dist/fonts/', 'public/fonts/');
+//     mix.copy([
+//     	'node_modules/uikit/dist/js/',
+//     	'!node_modules//**/*.min.js',
+//     	'!node_modules/uikit/dist/js/core{,/**}',
+//     	], 'resources/assets/js/uikit/');
+// });
+
 elixir((mix) => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+	mix.scripts(['jquery.js','uikit/uikit.js'])
+		.scriptsIn('uikit/components');
+
+	mix.less('app.less')
+		.webpack('app.js');
+});
+
+elixir((mix) => {
+    mix.browserSync({
+        proxy: 'sacc.dev',
+        notify: false	
+    });
 });
