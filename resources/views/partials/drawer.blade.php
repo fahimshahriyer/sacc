@@ -4,9 +4,11 @@
     </div>
 
     <nav class="drawer-navigation">
-    	<a href="/dashboard" class="nav-link"><i class="icon-multiline-chart"></i> Dashboard</a>
+    	<a href="{{ route('dashboard') }}" class="nav-link"><i class="icon-multiline-chart"></i> Dashboard</a>
+        <span class="nav-header">Invoices</span>
+        <a href="{{ route('invoice.index') }}" class="nav-link"><i class="icon-receipt"></i> All Invoices</a>
     	<span class="nav-header">Accounts</span>
-    	<a href="#" class="nav-link"><i class="icon-account-balance-wallet"></i>Account Balances</a>
+    	<a href="/account" class="nav-link"><i class="icon-account-balance-wallet"></i>Account Balances</a>
     	<a href="/account/create" class="nav-link"><i class="icon-add"></i>Add Account</a>
     	<a href="#" class="nav-link"><i class="icon-settings"></i>Manage Accounts</a>
         <span class="nav-header">Transactions</span>

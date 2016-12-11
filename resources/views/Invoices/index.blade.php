@@ -4,7 +4,6 @@
 @section('content')
     <div class="card elevated">
         <h1>All Invoices</h1>
-
         <table class="uk-table uk-table-striped">
             <thead>
                 <tr>
@@ -16,6 +15,7 @@
                     <td>Approval Date</td>
                     <td>Status</td>
                     <td>Created</td>
+                    <td>Action</td>
                 </tr>
             </thead>
             <tbody>
@@ -27,11 +27,19 @@
                         <td>{{$invoice->due_date->toFormattedDateString()}}</td>
                         <td>{{$invoice->grand_total}}</td>
                         <td>{{$invoice->approval_date->diffForhumans()}}</td>
-                        <td>{{$invoice->is_paid}}</td>
+                        <td>
+                            @if($invoice->is_paid === 'Due')
+                                <div class="uk-badge uk-badge-danger">Due</div>
+                            @else
+                                <div class="uk-badge uk-badge-success">Paid</div>
+                            @endif
+                        </td>
                         <td>{{$invoice->created_at->diffForHumans()}}</td>
+                        <td><a href="/invoice/{{ $invoice->id }}" class="uk-button"> Details</a></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        {!! $invoices->render() !!}
     </div>
 @endsection

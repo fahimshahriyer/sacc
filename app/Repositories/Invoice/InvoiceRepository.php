@@ -2,68 +2,33 @@
 
 namespace App\Repositories\Invoice;
 
-use App\Repositories\Invoice\InvoiceRepositoryInterface;
 use App\Models\Invoice;
-use App\Models\InvoiceItem;
-use App\Models\Student;
+use App\Repositories\BaseRepository;
 
-class InvoiceRepository implements InvoiceRepositoryInterface
+class InvoiceRepository extends BaseRepository implements InvoiceRepositoryInterface
 {
     /**
      * @var Invoice
      */
-    private $invoice;
-    /**
-     * @var InvoiceItem
-     */
-    private $items;
-    /**
-     * @var Student
-     */
-    private $student;
+    protected $model;
 
     /**
      * InvoiceRepository constructor.
      * @param Invoice $invoice
-     * @param InvoiceItem $items
-     * @param Student $student
+     * @internal param Invoice $model
      */
-    public function __construct(Invoice $invoice, InvoiceItem $items, Student $student)
+    public function __construct(Invoice $invoice)
     {
-
-        $this->invoice = $invoice;
-        $this->items = $items;
-        $this->student = $student;
-    }
-
-    public function getAll()
-    {
-        return $this->invoice->orderBy('created_at', 'asc')->get();
-    }
-
-    public function getById($id)
-    {
-        return $this->invoice->where('id', $id)->first();
+        $this->model= $invoice;
     }
 
     public function getInvoiceItemsByInvoiceId($id)
     {
-        return $this->items->where('invoice_id', $id)->get();
+        return ;
     }
 
-    public function create(array $attributes)
+    public function getInvoiceStudentByInvoiceId($id)
     {
-        // TODO: Implement create() method.
+        // TODO: Implement getInvoiceStudentByInvoiceId() method.
     }
-
-    public function update($id, array $attributes)
-    {
-        // TODO: Implement update() method.
-    }
-
-    public function delete($id)
-    {
-        // TODO: Implement delete() method.
-    }
-
 }

@@ -2,7 +2,7 @@
 @section('title', 'Create a Payplan')
 
 @section('content')
-	<div class="card eleveted">
+	<div class="card elevated">
 		<h2>Create a payplan</h2>
 		<div class="uk-margin-large-top">
 			<form class="uk-form">
@@ -13,19 +13,12 @@
 			        </div>
 			    </div>
 			    <div class="uk-form-row">
-			    	<label for="" class="uk-form-label"></label>
-			    	
+			    	<label for="" class="uk-form-label">Choose Type:</label>
+			    	<div class="uk-form-controls">
+
+					</div>
 			    </div>
 			</form>
 		</div>
 	</div>
-	<style>
-		#payplan-name{
-			border: none;
-			box-shadow: none;
-			background: transparent;
-			font-size: 24px !important;
-			letter-spacing: 0.5px;
-		}
-	</style>
 @endsection

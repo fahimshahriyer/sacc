@@ -12,6 +12,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('account','Account\AccountController');
 	Route::resource('payplan','Payplan\PayplanController');
-    Route::resource('invoice','InvoiceController');
+    /**
+     * Invoice Route
+     */
+    Route::resource('invoice','Invoice\InvoiceController');
 
 });

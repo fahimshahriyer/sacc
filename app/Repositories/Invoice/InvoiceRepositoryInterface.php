@@ -2,17 +2,12 @@
 
 namespace App\Repositories\Invoice;
 
-interface InvoiceRepositoryInterface
+use App\Repositories\BaseRepositoryInterface;
+
+interface InvoiceRepositoryInterface extends BaseRepositoryInterface
 {
-    public function getAll();
-
-    public function getById($id);
-
     public function getInvoiceItemsByInvoiceId($id);
 
-    public function create(array $attributes);
+    public function getInvoiceStudentByInvoiceId($id);
 
-    public function update($id, array $attributes);
-
-    public function delete($id);
 }

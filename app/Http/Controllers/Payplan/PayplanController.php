@@ -14,7 +14,7 @@ class PayplanController extends Controller
      */
     public function index()
     {
-        return view('payplan.index');
+        return view('payplans.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class PayplanController extends Controller
      */
     public function create()
     {
-        return view('payplan.create');
+        return view('payplans.create');
     }
 
     /**

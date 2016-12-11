@@ -14,7 +14,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('account.show');
+        return view('accounts.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class AccountController extends Controller
      */
     public function create()
     {
-        return view('account.create');
+        return view('accounts.create');
     }
 
     /**

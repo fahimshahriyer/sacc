@@ -26,9 +26,9 @@ class InvoiceTableSeeder extends Seeder
         foreach (range(1, 20) as $i) {
         	$items = collect();
 
-        	foreach( range(1, mt_rand(2,20)) as $j ) {
+        	foreach( range(1, mt_rand(2,5)) as $j ) {
         		$amount = $faker->numberBetween(1000,5000);
-        		$quantity = $faker->numberBetween(1,10);
+        		$quantity = $faker->numberBetween(1,3);
 
         		$items->push( new InvoiceItem([
         			'name' => $faker->sentence,
