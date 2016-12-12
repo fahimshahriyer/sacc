@@ -15,16 +15,24 @@ class CreateFeesTable extends Migration
     {
         Schema::create('fees', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('payplan_id')->unsigned();
             $table->string('name')->unique();
             $table->string('description')->nullable();
-            $table->double('amount');
             $table->timestamps();
         });
 
-        Schema::table('fees', function (Blueprint $table){
+        Schema::create('fee_payplan' ,function (Blueprint $table){
+
+            $table->integer('fee_id')->unsigned();
+            $table->integer('payplan_id')->unsigned();
+            $table->decimal('amount');
+            $table->timestamps();
+
+            $table->foreign('fee_id')->references('id')->on('fees')
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('payplan_id')->references('id')->on('payplans')
-            ->onUpdate('cascade')->onDelete('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->primary(['fee_id', 'payplan_id']);
         });
     }
 
@@ -36,5 +44,6 @@ class CreateFeesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('fees');
+        Schema::dropIfExists('fee_payplan');
     }
 }
