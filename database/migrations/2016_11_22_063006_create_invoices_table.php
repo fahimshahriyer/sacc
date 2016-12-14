@@ -25,6 +25,8 @@ class CreateInvoicesTable extends Migration
             $table->decimal('grand_total');
             $table->dateTime('approval_date');
             $table->boolean('is_paid');
+            $table->integer('created_by')->unsigned()->nullable();
+            $table->integer('updated_by')->unsigned()->nullable();
             $table->timestamps();
         });
     }

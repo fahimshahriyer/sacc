@@ -108,7 +108,8 @@ abstract class BaseRepository implements BaseRepositoryInterface
      * Returns paginated result
      *
      * @param int $limit
-     * @return Collection
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function paginate($limit=15)
     {

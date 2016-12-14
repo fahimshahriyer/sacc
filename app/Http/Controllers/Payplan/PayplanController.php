@@ -2,11 +2,29 @@
 
 namespace App\Http\Controllers\Payplan;
 
+use App\Http\Requests\StoreNewPayplan;
+use App\Repositories\Fee\FeeRepository;
+use App\Repositories\Payplan\PayplanRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PayplanController extends Controller
 {
+    protected $payplan;
+
+    protected $fee;
+
+    /**
+     * PayplanController constructor.
+     * @param PayplanRepository $payplan ]
+     * @param FeeRepository $fee
+     */
+    public function __construct(PayplanRepository $payplan, FeeRepository $fee)
+    {
+        $this->payplan = $payplan;
+
+        $this->fee=$fee;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +32,8 @@ class PayplanController extends Controller
      */
     public function index()
     {
-        return view('payplans.index');
+        $data['payplans'] = $this->payplan->orderBy('name' ,'asc')->get();
+        return view('payplans.index', $data);
     }
 
     /**
@@ -30,12 +49,20 @@ class PayplanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param StoreNewPayplan $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreNewPayplan $request)
     {
-        //
+        $this->payplan->create([
+            'name' => $request->name,
+            'display_name' => $request->display_name,
+            'description' => $request->description,
+            'billing_cycle' => $request->billing_cycle,
+            'payplan_terms' => $request->payplan_terms,
+        ]);
+
+        return redirect('/payplan');
     }
 
     /**
@@ -46,7 +73,9 @@ class PayplanController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['payplan'] = $this->payplan->getById($id);
+        $data['payplanFees'] = $this->fee->where('payplan_id', $id , '=');
+        return view('payplans.show', $data);
     }
 
     /**

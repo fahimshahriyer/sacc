@@ -24,16 +24,11 @@ require('laravel-elixir-vue-2');
 // });
 
 elixir((mix) => {
-	mix.scripts(['jquery.js','uikit/uikit.js'])
-		.scriptsIn('uikit/components');
-
 	mix.less('app.less')
-		.webpack('app.js');
-});
+	    .webpack('app.js');
 
-elixir((mix) => {
     mix.browserSync({
         proxy: 'sacc.dev',
-        notify: false	
+        notify: false
     });
 });

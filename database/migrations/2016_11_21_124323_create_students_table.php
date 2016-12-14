@@ -18,7 +18,9 @@ class CreateStudentsTable extends Migration
             $table->integer('user_id')->unsigned()->unique();
             $table->string('name');
             $table->bigInteger('unique_roll_no')->unique();
-            $table->boolean('is_active')->default(1);
+            $table->boolean('is_active')->default(true);
+            $table->integer('created_by')->unsigned()->nullable();
+            $table->integer('updated_by')->unsigned()->nullable();
             $table->timestamps();
         });
 

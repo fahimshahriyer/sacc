@@ -5,7 +5,7 @@
 	<div class="card elevated">
 		<h2 class="uk-text-center">Create an Account</h2>
 		<div class="uk-width-medium-6-10 uk-container-center">
-			<form class="uk-form uk-form-stacked">
+			<form class="uk-form uk-form-stacked" v-on:submit.prevent>
 			    <div class="uk-form-row">
 			        <label class="uk-form-label" for="form-input-1">Account Name</label>
 			        <div class="uk-form-controls">
@@ -14,11 +14,11 @@
 			    </div>
 			    <div class="uk-form-row">
 			        <label class="uk-form-label" for="form-input-1">Account Type</label>
-			        <div class="uk-button-group" data-uk-button-radio>
-	                    <button class="uk-button">Button</button>
-	                    <button class="uk-button">Button</button>
-	                    <button class="uk-button">Button</button>
-	                </div>
+			        <div>
+						<input type="radio" name="one" id="one" value="one" v-model="picked">
+						<input type="radio" name="one" id="two" value="two" v-model="picked">
+					</div>
+					<span>Picked : @{{ picked }}</span>
 			    </div>
 			    <div class="uk-form-row">
 			        <label class="uk-form-label" for="form-input-1">Account Head</label>

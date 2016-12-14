@@ -2555,6 +2555,10 @@
 .icon-zoom-out-map:before {
   content: "\e56b";
 }
+body {
+  background: #FAFAFA;
+  min-height: 100vh;
+}
 /* ========================================================================
    Component: Base
  ========================================================================== */
@@ -13562,7 +13566,7 @@ html[dir="rtl"] .uk-slider > * {
   background: #fff;
 }
 .drawer {
-  position: absolute;
+  position: fixed;
   z-index: 5;
   top: 0;
   left: 0;
@@ -13647,8 +13651,39 @@ html[dir="rtl"] .uk-slider > * {
   background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
+.card .card-footer {
+  border-top: 1px solid #e6e6e6;
+  background-color: #FAFAFA;
+  margin: -23px;
+  padding: 25px;
+}
 .elevated {
   margin-top: -104px;
+}
+.box {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  height: 120px;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid #efefef;
+  border-radius: 4px;
+  justify-content: space-around;
+}
+.box:hover {
+  background: #fafafa;
+}
+.box.selected {
+  border-color: #AA96DA;
+}
+#payplan-name {
+  font-size: 24px !important;
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
 /*# sourceMappingURL=app.css.map */

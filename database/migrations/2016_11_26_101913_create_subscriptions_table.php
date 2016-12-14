@@ -22,6 +22,8 @@ class CreateSubscriptionsTable extends Migration
             $table->boolean('is_active');
             $table->integer('cancelled_by');
             $table->string('cancellation_reason');
+            $table->integer('created_by')->unsigned()->nullable();
+            $table->integer('updated_by')->unsigned()->nullable();
             $table->timestamps();
         });
 

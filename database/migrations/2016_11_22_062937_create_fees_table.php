@@ -43,7 +43,7 @@ class CreateFeesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fees');
         Schema::dropIfExists('fee_payplan');
+        Schema::dropIfExists('fees');
     }
 }

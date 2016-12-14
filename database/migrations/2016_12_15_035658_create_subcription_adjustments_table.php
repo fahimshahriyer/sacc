@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdjustmentsTable extends Migration
+class CreateSubcriptionAdjustmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,18 @@ class CreateAdjustmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('adjustments', function (Blueprint $table) {
+        Schema::create('subcription_adjustments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('invoice_id')->unsigned();
+            $table->integer('subscription_id')->unsigned();
             $table->string('name');
+            $table->integer('fee_id')->unsigned()->nullable();
             $table->double('amount');
             $table->double('percent');
             $table->string('operation');
             $table->string('description')->nullable();
+            $table->integer('created_by')->unsigned()->nullable();
+            $table->integer('updated_by')->unsigned()->nullable();
             $table->timestamps();
-        });
-
-        Schema::table('adjustments', function (Blueprint $table) {
-            $table->foreign('invoice_id')->references('id')->on('invoices')
-                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -37,6 +35,6 @@ class CreateAdjustmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('adjustments');
+        Schema::dropIfExists('subcription_adjustments');
     }
 }

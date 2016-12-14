@@ -4,7 +4,7 @@
             <i class="icon-menu"></i>
         </div>
 
-        <span class="navbar-title">Dashboard</span>
+        <span class="navbar-title">@yield('title')</span>
         <div class="search-form">
             <i class="icon-search"></i>
             <input type="text" name="search" id="search" placeholder="Search">

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTransactionsTable extends Migration
+class CreateInvoiceAdjustmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,20 @@ class CreateTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('adjustments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('invoice_id')->unsigned();
-            $table->string('type');
+            $table->string('name');
             $table->double('amount');
-            $table->integer('debit_account_id');
-            $table->integer('credit_account_id');
+            $table->double('percent');
+            $table->string('operation');
             $table->string('description')->nullable();
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
             $table->timestamps();
         });
 
-        Schema::table('transactions', function (Blueprint $table) {
+        Schema::table('adjustments', function (Blueprint $table) {
             $table->foreign('invoice_id')->references('id')->on('invoices')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
@@ -39,6 +39,6 @@ class CreateTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('adjustments');
     }
 }

@@ -4,7 +4,40 @@
     <div class="uk-grid">
         <div class="uk-width-1-1">
             <div class="card elevated">
-                <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, nulla.</h1>
+                <div class="uk-width-medium-1-3">
+                    <div class="uk-flex uk-flex-column uk-flex-middle uk-flex-space-between">
+                        <div class="uk-margin-large-bottom">
+                            <span class="uk-text-muted">INCOME TODAY</span>
+                            <h2>35,899 BDT</h2>
+                        </div>
+                        <div class="uk-margin-large-bottom">
+                            <span class="uk-text-muted">EXPENSE TODAY</span>
+                            <h2>23,899 BDT</h2>
+                        </div>
+                        <div>
+                            <span class="uk-text-muted">PROFIT TODAY</span>
+                            <h2>12,000 BDT</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-medium-2-3"></div>
+            </div>
+        </div>
+    </div>
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-3">
+            <div class="card">
+                <h3>Invoices</h3>
+            </div>
+        </div>
+        <div class="uk-width-medium-1-3">
+            <div class="card">
+                <h3>Expenses</h3>
+            </div>
+        </div>
+        <div class="uk-width-medium-1-3">
+            <div class="card">
+                <h3>Profit and Loss</h3>
             </div>
         </div>
     </div>

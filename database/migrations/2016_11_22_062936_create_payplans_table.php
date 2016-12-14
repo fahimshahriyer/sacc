@@ -20,8 +20,10 @@ class CreatePayplansTable extends Migration
             $table->string('description')->nullable();
             $table->boolean('is_recurring');
             $table->integer('billing_cycle');
-            $table->string('payplan_terms');
-            $table->boolean('is_active');
+            $table->string('payplan_terms')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->integer('created_by')->unsigned()->nullable();
+            $table->integer('updated_by')->unsigned()->nullable();
             $table->timestamps();
         });
     }

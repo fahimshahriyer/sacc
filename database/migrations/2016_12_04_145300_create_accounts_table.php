@@ -15,16 +15,19 @@ class CreateAccountsTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_type')->unsigned();
+            $table->integer('account_category_id')->unsigned();
             $table->string('name');
+            $table->string('description')->nullable();
             $table->string('account_head');
+            $table->double('balance');
             $table->boolean('is_locked')->default(false);
-            $table->string('description');
+            $table->integer('created_by')->unsigned()->nullable();
+            $table->integer('updated_by')->unsigned()->nullable();
             $table->timestamps();
         });
 
         Schema::table('accounts', function (Blueprint $table) {
-            $table->foreign('account_type')->references('id')->on('account_types')
+            $table->foreign('account_category_id')->references('id')->on('account_categories')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }
