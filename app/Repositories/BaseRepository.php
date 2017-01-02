@@ -79,7 +79,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
         $this->unsetClauses();
         $this->newQuery()->eagerLoad();
-        return $this->query->findOrFail($id);
+        return $this->query->find($id);
     }
     /**
      * Get all the model records in the database

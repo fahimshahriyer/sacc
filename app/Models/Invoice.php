@@ -19,9 +19,14 @@ class Invoice extends Model
         'updated_at'
     ];
 
-    public function getIsPaidAttribute($value)
+    public function getStatusAttribute($value)
     {
-        return $status = $value ? 'Paid' : 'Due' ;
+        $statuses = [
+            "Due" => 0,
+            "Partial" => 1,
+            "Paid" => 2
+        ];
+        return $status = array_search($value,$statuses);
     }
 
     public function items()

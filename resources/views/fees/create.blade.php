@@ -23,7 +23,7 @@
             </fieldset>
             <footer class="card-footer uk-margin-large-top">
                 <button type="submit" class="uk-button uk-button-primary uk-button-large">Save</button>
-                <a href="{{ route('fee.index') }}" class="uk-button uk-button-large">Cancel</a>
+                <a href="{{ url()->previous() }}" class="uk-button uk-button-large">Cancel</a>
             </footer>
         </form>
     </div>

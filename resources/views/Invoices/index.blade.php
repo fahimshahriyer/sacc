@@ -28,10 +28,10 @@
                         <td>{{$invoice->grand_total}}</td>
                         <td>{{$invoice->approval_date->diffForhumans()}}</td>
                         <td>
-                            @if($invoice->is_paid === 'Due')
-                                <div class="uk-badge uk-badge-danger">Due</div>
+                            @if($invoice->status === 'Partial' && $invoice->status === 'Paid')
+                                <div class="uk-badge uk-badge-success">{{ $invoice->status }}</div>
                             @else
-                                <div class="uk-badge uk-badge-success">Paid</div>
+                                <div class="uk-badge uk-badge-danger">{{ $invoice->status }}</div>
                             @endif
                         </td>
                         <td>{{$invoice->created_at->diffForHumans()}}</td>

@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Payplan extends Model
 {
     protected $fillable = [
-        'name' , 'display_name' , 'description' , 'is_recurring' ,
+        'name' , 'description' , 'is_recurring' ,
         'is_recurring' , 'billing_cycle' , 'payplan_terms' , 'is_active'
     ];
+
+    public function fees()
+    {
+        return $this->hasMany(Fee::class);
+    }
 }

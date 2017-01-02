@@ -54,15 +54,16 @@ class PayplanController extends Controller
      */
     public function store(StoreNewPayplan $request)
     {
-        $this->payplan->create([
+
+        $payplan = $this->payplan->create([
             'name' => $request->name,
-            'display_name' => $request->display_name,
             'description' => $request->description,
             'billing_cycle' => $request->billing_cycle,
             'payplan_terms' => $request->payplan_terms,
+            'is_recurring' => $is_recurring
         ]);
 
-        return redirect('/payplan');
+        return redirect(route('payplan.show', $payplan->id));
     }
 
     /**

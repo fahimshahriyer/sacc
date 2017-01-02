@@ -7,8 +7,8 @@
         <a href="{{ route('home') }}" class="nav-link"><i class="icon-home"></i> Home</a>
     	<a href="{{ route('dashboard') }}" class="nav-link"><i class="icon-multiline-chart"></i> Dashboard</a>
         <span class="nav-header">Accounting</span>
-        <a href="#" class="nav-link"><i class="icon-monetization-on"></i> Incomes</a>
-        <a href="#" class="nav-link"><i class="icon-explicit"></i> Expenses</a>
+        <a href="{{ route('income.index') }}" class="nav-link"><i class="icon-monetization-on"></i> Incomes</a>
+        <a href="{{ route('expense.index') }}" class="nav-link"><i class="icon-explicit"></i> Expenses</a>
         <a href="#" class="nav-link"><i class="icon-account-balance"></i> Banking</a>
         <a href="#" class="nav-link"><i class="icon-storage"></i> Assets</a>
         <a href="#" class="nav-link"><i class="icon-account-box"></i> Employees</a>

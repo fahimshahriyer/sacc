@@ -2,11 +2,36 @@
 
 namespace App\Http\Controllers\Account;
 
+use App\Http\Requests\StoreAccountRequest;
+use App\Repositories\Account\AccountTypeRepository;
+use App\Repositories\Account\AccountRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AccountController extends Controller
 {
+    /**
+     * @var AccountRepository
+     */
+    private $account;
+
+    /**
+     * @var AccountTypeRepository
+     */
+    private $type;
+
+    /**
+     * AccountController constructor.
+     * @param AccountRepository $account
+     * @param AccountTypeRepository $type
+     */
+    public function __construct(AccountRepository $account, AccountTypeRepository $type)
+    {
+
+        $this->account = $account;
+        $this->type = $type;
+    }
     /**
      * Display a listing of the all the accounts.
      *
@@ -14,7 +39,11 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('accounts.index');
+        $accounts = $this->account->with('type')->getAll();
+
+        return view('accounts.index', [
+            'accounts' => $accounts
+        ]);
     }
 
     /**
@@ -24,18 +53,33 @@ class AccountController extends Controller
      */
     public function create()
     {
-        return view('accounts.create');
+        $types = $this->type->getAll();
+
+        return view('accounts.create',[
+            'types' => $types
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param StoreAccountRequest|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAccountRequest $request)
     {
-        //
+        $opening_date = Carbon::now();
+
+        $account = $this->account->create([
+            'name' => $request->account_name,
+            'account_type_id' => $request->account_type,
+            'account_head' => $request->account_head,
+            'description' => $request->account_description,
+            'opening_balance' => $request->opening_balance,
+            'opening_date' => $opening_date
+        ]);
+
+        return redirect(route('account.show', $account->id));
     }
 
     /**
@@ -46,7 +90,11 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        //
+        $account = $this->account->getById($id);
+
+        return view('accounts.show',[
+            'account' => $account
+        ]);
     }
 
     /**

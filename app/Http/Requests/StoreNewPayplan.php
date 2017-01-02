@@ -24,11 +24,11 @@ class StoreNewPayplan extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|alpha_dash|unique:payplans|max:255',
+            'name' => 'required|unique:payplans|max:255',
             'description' => 'required|nullable|max:255',
             'is_recurring' => 'boolean',
-            'billing_cycle' => '',
-            'payplan_terms' => 'required|alpha_dash|unique:payplans|max:255',
+            'billing_cycle' => 'required',
+            'payplan_terms' => 'alpha_dash|unique:payplans|max:255',
             'is_active' => 'boolean'
         ];
     }

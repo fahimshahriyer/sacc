@@ -10,13 +10,7 @@
             <div class="uk-form-row">
                 <label class="uk-form-label">Payplan Name</label>
                 <div class="uk-form-controls uk-placeholder">
-                    <input type="text" name="name" id="payplan-name" placeholder="Ex: Monthly Session 16-17" class="uk-width-1-1 uk-form-large" required>
-                </div>
-            </div>
-            <div class="uk-form-row">
-                <label for="" class="uk-form-label">Display Name (optional)</label>
-                <div class="uk-form-controls">
-                    <input type="text" name="display_name" id="display_name" class="uk-width-3-5 uk-form-large">
+                    <input type="text" name="name" id="payplan-name" value="{{ old('name') }}" placeholder="Ex: Monthly Session 16-17" class="uk-width-1-1 uk-form-large" required>
                 </div>
             </div>
             <div class="uk-form-row">
@@ -46,7 +40,7 @@
             </div>
             <footer class="card-footer uk-margin-large-top">
                 <div>
-                    <button type="submit" class="uk-button uk-button-primary uk-button-large">Submit</button>
+                    <button type="submit" class="uk-button uk-button-primary uk-button-large">Save</button>
                     <button class="uk-button uk-button-large">Cancel</button>
                 </div>
             </footer>

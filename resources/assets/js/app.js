@@ -14,6 +14,7 @@ require('./bootstrap');
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('new-payplan', require('./components/payplan/NewPayplan.vue'));
+Vue.component('new-payment', require('./components/payment/NewPayment.vue'));
 
 const app = new Vue({
     el: '#app',

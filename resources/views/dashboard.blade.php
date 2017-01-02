@@ -27,17 +27,17 @@
     <div class="uk-grid">
         <div class="uk-width-medium-1-3">
             <div class="card">
-                <h3>Invoices</h3>
+                <h4>Invoices</h4>
             </div>
         </div>
         <div class="uk-width-medium-1-3">
             <div class="card">
-                <h3>Expenses</h3>
+                <h4>Expenses</h4>
             </div>
         </div>
         <div class="uk-width-medium-1-3">
             <div class="card">
-                <h3>Profit and Loss</h3>
+                <h4>Profit and Loss</h4>
             </div>
         </div>
     </div>

@@ -6097,12 +6097,6 @@ select.uk-form-width-mini {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  margin-bottom: 16px;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 400;
-  opacity: 0.5;
 }
 /* Modifier: `uk-form-horizontal`
  * Requires sub-objects: `uk-form-label`, `uk-form-controls`
@@ -6114,12 +6108,6 @@ select.uk-form-width-mini {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    margin-bottom: 16px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 400;
-    opacity: 0.5;
   }
 }
 /* Desktop and bigger */
@@ -6128,11 +6116,6 @@ select.uk-form-width-mini {
     width: 200px;
     margin-top: 5px;
     float: left;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 400;
-    opacity: 0.5;
   }
   .uk-form-horizontal .uk-form-controls {
     margin-left: 215px;
@@ -13449,7 +13432,8 @@ html[dir="rtl"] .uk-slider > * {
 }
 .content-wrapper {
   z-index: 2;
-  width: 1000px;
+  max-width: 1200px;
+  padding: 0 25px;
   margin: 0 auto;
 }
 .obfuscator {
@@ -13647,18 +13631,31 @@ html[dir="rtl"] .uk-slider > * {
 }
 .card {
   padding: 24px;
-  border-radius: 4px;
   background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 8px;
+  box-shadow: 0 5px 40px 0 rgba(26, 44, 57, 0.2);
+  border: 1px solid #dbdade;
 }
 .card .card-footer {
   border-top: 1px solid #e6e6e6;
   background-color: #FAFAFA;
   margin: -23px;
   padding: 25px;
+  border-radius: 0 0 8px 8px;
 }
 .elevated {
   margin-top: -104px;
+}
+.home-navigation {
+  list-style: none;
+  margin: 0;
+}
+.home-navigation .home-navigation-header {
+  text-transform: uppercase;
+  color: #6E6E87;
+  letter-spacing: 1px;
+  font-size: 12px;
+  padding-bottom: 15px;
 }
 .box {
   display: -webkit-box;

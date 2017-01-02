@@ -23,8 +23,9 @@ class CreateInvoicesTable extends Migration
             $table->decimal('total_tax')->nullable();
             $table->decimal('total_adjustment');
             $table->decimal('grand_total');
+            $table->decimal('amount_due')->nullable();
+            $table->smallInteger('status')->default(0); // 0 = due, 1 = partial, 2 = paid
             $table->dateTime('approval_date');
-            $table->boolean('is_paid');
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
             $table->timestamps();

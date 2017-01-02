@@ -16,9 +16,8 @@ class CreatePayplansTable extends Migration
         Schema::create('payplans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('display_name')->nullable();
             $table->string('description')->nullable();
-            $table->boolean('is_recurring');
+            $table->boolean('is_recurring')->default(true);
             $table->integer('billing_cycle');
             $table->string('payplan_terms')->nullable();
             $table->boolean('is_active')->default(true);

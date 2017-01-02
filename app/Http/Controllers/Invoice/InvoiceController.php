@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Invoice;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Repositories\Invoice\InvoiceRepositoryInterface as Invoice;
 use App\Repositories\Invoice\InvoiceItemRepository as InvoiceItem;
@@ -27,7 +26,7 @@ class InvoiceController extends Controller
      *
      * @var InvoiceItem
      */
-    protected $invoiceItem;
+    protected $invoice_item;
 
     /**
      * @var Student
@@ -38,12 +37,13 @@ class InvoiceController extends Controller
      * InvoiceController constructor.
      *
      * @param Invoice $invoices
-     * @param InvoiceItem $invoiceItem
+     * @param InvoiceItem $invoice_item
+     * @param Student $student
      */
-	public function __construct(Invoice $invoices, InvoiceItem $invoiceItem, Student $student)
+	public function __construct(Invoice $invoices, InvoiceItem $invoice_item, Student $student)
 	{
         $this->invoices = $invoices;
-        $this->invoiceItem = $invoiceItem;
+        $this->invoice_item = $invoice_item;
         $this->student = $student;
     }
 
@@ -73,22 +73,20 @@ class InvoiceController extends Controller
      */
     public function show($id)
     {
-        $data['invoice'] = $this->invoices->getById($id);
-        $data['invoiceItems'] = $this->invoiceItem->where('invoice_id',$id)->get();
+        $invoice = $this->invoices->getById($id);
 
-        $student_id = $data['invoice']->student_id;
+        if (! $invoice){
+            abort(404);
+        }
 
-        $data['student'] = $this->student->getById($student_id);
+        $invoice_items = $this->invoice_item->where('invoice_id',$id)->get();
+        $student_id = $invoice->student_id;
+        $student = $this->student->getById($student_id);
 
-        return view('invoices.details' , $data);
-    }
-
-    public function allInvoice(){
-
-        $invoices = $this->invoices->paginate(15);
-
-        return response()->json([
-            'model' => $invoices
+        return view('invoices.details' ,[
+            'invoice' => $invoice,
+            'invoice_items' => $invoice_items,
+            'student' => $student
         ]);
     }
 }

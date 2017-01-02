@@ -37,10 +37,10 @@
                         <div>
                             <p class="h4 uk-text-bold">Invoice no: #{{ $invoice->invoice_no }}</p>
                             <p class="h5">Date: {{$invoice->invoice_date->toFormattedDateString()}}</p>
-                            @if($invoice->is_paid === 'Due')
-                                <div class="uk-text-danger uk-h1">Due</div>
+                            @if($invoice->status === 'Partial' && $invoice->status === 'Paid')
+                                <div class="uk-text-success uk-h1">{{ $invoice->status }}</div>
                             @else
-                                <div class="uk-text-success uk-h1">Paid</div>
+                                <div class="uk-text-danger uk-h1">{{ $invoice->status }}</div>
                             @endif
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach($invoiceItems as $index=>$item)
+                    @foreach($invoice_items as $index=>$item)
                         <tr>
                             <td>{{++$index}}</td>
                             <td>{{$item->name}}</td>

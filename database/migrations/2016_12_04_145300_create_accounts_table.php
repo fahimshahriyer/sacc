@@ -15,11 +15,15 @@ class CreateAccountsTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_category_id')->unsigned();
+            $table->integer('account_type_id')->unsigned();
             $table->string('name');
             $table->string('description')->nullable();
-            $table->string('account_head');
-            $table->double('balance');
+            $table->string('account_head')->nullable();
+            $table->double('current_balance')->default(0);
+            $table->double('opening_balance')->default(0);
+            $table->double('ending_balance')->nullable();
+            $table->dateTime('opening_date');
+            $table->dateTime('ending_date')->nullable();
             $table->boolean('is_locked')->default(false);
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
@@ -27,7 +31,7 @@ class CreateAccountsTable extends Migration
         });
 
         Schema::table('accounts', function (Blueprint $table) {
-            $table->foreign('account_category_id')->references('id')->on('account_categories')
+            $table->foreign('account_type_id')->references('id')->on('account_types')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }

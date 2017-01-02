@@ -25,6 +25,7 @@ require('laravel-elixir-vue-2');
 
 elixir((mix) => {
 	mix.less('app.less')
+        .scriptsIn('resources/assets/js/uikit/','public/js/all.js')
 	    .webpack('app.js');
 
     mix.browserSync({

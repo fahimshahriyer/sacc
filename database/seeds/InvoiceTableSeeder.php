@@ -53,8 +53,8 @@ class InvoiceTableSeeder extends Seeder
 	        	'sub_total' => $subTotal,
 	        	'total_adjustment' => $adjustment,
 	        	'grand_total' => $grandTotal,
+                'amount_due' => $grandTotal,
 	        	'approval_date' => $invoiceDate,
-	        	'is_paid' => $faker->boolean
 	        ]);
 
 	        $invoice->items()->saveMany($items);
