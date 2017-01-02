@@ -94,6 +94,7 @@
         },
         methods: {
             getDueInvoices() {
+                
                 axios.get('/api/student/' + this.student_id + '/invoice/').then(response => this.invoices = response.data);
             }
         },
